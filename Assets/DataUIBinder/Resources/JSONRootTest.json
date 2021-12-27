@@ -1,0 +1,11 @@
+{
+    "str":"strChange",
+    "arr":[
+        {
+            "a":"d"
+        }
+    ],
+    "int":2,
+    "bool":true,
+    "new":"fromJsonFile"
+}

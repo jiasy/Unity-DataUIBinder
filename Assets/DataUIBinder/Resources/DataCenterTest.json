@@ -1,0 +1,19 @@
+{
+    "userInfo":{
+        "hp":1000,
+        "mp":1000,
+        "coins":1000
+    },
+    "skillInfoList":[
+        {
+            "skillID":1,
+            "name":"fireBall",
+            "level":1,
+        },
+        {
+            "skillID":2,
+            "name":"iceBall",
+            "level":2,
+        }
+    ]
+}

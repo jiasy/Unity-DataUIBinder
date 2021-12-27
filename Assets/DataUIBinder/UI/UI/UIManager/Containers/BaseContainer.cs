@@ -1,0 +1,22 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+namespace DataUIBinder {
+    //基础。只有一层。独立的游戏体。-0
+    //UIManager.instance.BaseContainer
+    public class BaseContainer : UIContainer {
+        public override void Awake() {
+            uiType = UIType.Base;
+            base.Awake();
+        }
+        // public override void Start() {
+        //     base.Start();
+
+        // }
+        public override UIMain openUI(GameObject gameObject_, string uiName_ = null, string dataPath_ = null) {
+            UIMain _uiMain = base.openUI(gameObject_, uiName_,dataPath_);
+            _uiMain.uiType = UIType.Base;
+            return _uiMain;
+        }
+    }
+}

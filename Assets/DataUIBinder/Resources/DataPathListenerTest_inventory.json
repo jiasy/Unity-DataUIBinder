@@ -1,0 +1,16 @@
+{
+    "itemList":[
+        {
+            "itemID":1,
+            "count":1
+        },
+        {
+            "itemID":2,
+            "count":2
+        },
+        {
+            "itemID":3,
+            "count":3
+        }
+    ]
+}
