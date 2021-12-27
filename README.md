@@ -1,4 +1,4 @@
-###DataUIBinder
+### DataUIBinder
 
 ----
 
@@ -9,17 +9,8 @@
 `DataUIBinder` 是一个 DataBinding 框架，实现了数据和UI的双向绑定。
 借鉴了VUE的双向绑定的概念，借鉴了`Redis`中任意数据结构都可以展开成键值对的概念。
 将通过特殊命名的方法，在运行时将UI和数据进行绑定。
+![111](https://user-images.githubusercontent.com/32121702/147458703-65e10117-4da6-4cf2-94d8-7b362ce079b5.png)
 
-```
-graph BT
-
-DataCenter(DataCenter) -.-> DataUIBinder(DataUIBinder)
-UIManager(UIManager) -.-> DataUIBinder(DataUIBinder)
-UINode(UINode) -.-> DataUIBinder(DataUIBinder)
-Replay(Replay) -.-> DataUIBinder(DataUIBinder)
-SimpleJson(SimpleJson) -.-> DataUIBinder(DataUIBinder)
-Test(Test) -.-> DataUIBinder(DataUIBinder)
-```
 
 #### 数据中心
 
