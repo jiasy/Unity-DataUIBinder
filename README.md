@@ -10,7 +10,7 @@
 借鉴了VUE的双向绑定的概念，借鉴了`Redis`中任意数据结构都可以展开成键值对的概念。
 将通过特殊命名的方法，在运行时将UI和数据进行绑定。
 
-```mermaid
+```
 graph BT
 
 DataCenter(DataCenter) -.-> DataUIBinder(DataUIBinder)
