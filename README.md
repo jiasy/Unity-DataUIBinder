@@ -9,7 +9,8 @@
 `DataUIBinder` 是一个 DataBinding 框架，实现了数据和UI的双向绑定。
 借鉴了`VUE`的双向绑定的概念，借鉴了`Redis`中任意数据结构都可以展开成键值对的概念。
 将通过特殊命名的方法，在运行时将UI和数据进行绑定。
-![222](https://user-images.githubusercontent.com/32121702/147531259-9d3d5ca2-acc9-472c-8b51-450ae3022793.png)
+![111](https://user-images.githubusercontent.com/32121702/147549406-8b699d8a-df2b-4419-9c9f-fcd2acbfa481.png)
+
 
 
 
