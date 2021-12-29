@@ -83,9 +83,10 @@ namespace DataUIBinder{
         //     base.OnDestroy();
         // }
         void Update(){
-            DataCenter.frameUpdate();
-            UIItem.doFrameUpdate();
-            ComponentWrapper.doFrameUpdate();
+            float _dt = Time.deltaTime;
+            DataCenter.frameUpdate(_dt);
+            UIItem.doFrameUpdate(_dt);
+            ComponentWrapper.doFrameUpdate(_dt);
         }
         private void changeWillMoveNum(int bufferInt_){
             dc.sv("temp.willMoveNum",dc.gv("temp.willMoveNum").AsInt + bufferInt_);

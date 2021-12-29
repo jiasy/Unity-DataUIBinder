@@ -163,19 +163,23 @@ namespace DataUIBinder{
                     throw new Exception("ERROR : 向 "+dataPath_+" 命名空间节点合并，值必须是一个字典。");
                 }
                 if(isSet_){
-                    List<string> _strList = CSharpExtensionUtils.StrListInstance;
-                    _strList.Clear();
-                    var _keysEnume = this[dataPath_].Keys.GetEnumerator();
-                    while (_keysEnume.MoveNext()) {
-                        _strList.Add(_keysEnume.Current);
-                    }
-                    for (int _idx = 0; _idx < _strList.Count; _idx++) {
-                        this[dataPath_].Remove(_strList[_idx]);
-                    }
-                    _strList.Clear();
+                    clearKeyValueOnPath(dataPath_);
                 }
                 this[dataPath_].merge(jsNode_);
             }
+        }
+        public void clearKeyValueOnPath(string dataPath_){
+            List<string> _strList = CSharpExtensionUtils.StrListInstance;
+            _strList.Clear();
+            var _valueOnPath = this[dataPath_];
+            var _keysEnume = _valueOnPath.Keys.GetEnumerator();
+            while (_keysEnume.MoveNext()) {
+                _strList.Add(_keysEnume.Current);
+            }
+            for (int _idx = 0; _idx < _strList.Count; _idx++) {
+                _valueOnPath.Remove(_strList[_idx]);
+            }
+            _strList.Clear();
         }
         public override void setToObjectRelativePath(string dataPath_,JSONNode jsonNode_){
             JSONNode  _jsNode = getValue(dataPath_);

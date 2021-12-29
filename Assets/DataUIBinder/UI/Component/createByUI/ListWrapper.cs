@@ -274,7 +274,7 @@ namespace DataUIBinder{
             }
         }
 #endif
-        public void frameUpdate(){
+        public void frameUpdate(float dt_){
             if(begin == end){//只显示一行的时候，强制判断一下
                 isChanged = true;
             }
@@ -326,7 +326,7 @@ namespace DataUIBinder{
                     for (int _idx = 0; _idx < _addIdxList.Count; _idx++) {
                         int _itemIdx = _addIdxList[_idx];
                         if(_itemIdx != -1){
-                            getItem(_itemIdx,pattern,filterAndSortIdxList[_itemIdx],width,height);   
+                            setItem(_itemIdx,pattern,filterAndSortIdxList[_itemIdx],width,height);   
                         }
                     }
                     List<int> _removeIdxList = _currentIdxList.Except(_targetIdxList).ToList();
@@ -390,7 +390,7 @@ namespace DataUIBinder{
             base.OnDestroy();
             ComponentWrapper.removeUpdateAble(this);
         }
-        public UIItem getItem(int itemIdx_,string listDataPath_,int dataIdx_,float width_,float height_){
+        public UIItem setItem(int itemIdx_,string listDataPath_,int dataIdx_,float width_,float height_){
             UIItem _uiItem = getFromPool();
 #if UNITY_EDITOR
             _uiItem.gameObject.name = _uiItem.gameObject.name.splitWith("<")[0] + "<" + itemIdx_.ToString() + ">[" + dataIdx_.ToString() + "]";
@@ -451,6 +451,31 @@ namespace DataUIBinder{
             }else{
                 activeItemList.RemoveAt(_idx);
             }
+        }
+        //通过 列表元素序号 或 数据序号，来获取列表的起始位置（上或左，用来缓动到指定位置）。
+        public float getPosByItemIdx(
+            int itemIdx_,
+            float topOrLeftBuffer_ = .0f//左侧或者上方内容的宽高。
+        ){
+            int _lineNum = (int)Mathf.Floor(itemIdx_ / itemNum);
+            float _topOrLeft = 0;
+            if(type == ListType.X){
+                _topOrLeft = -1 * itemRange * _lineNum - topOrLeftBuffer_;
+            }else if(type == ListType.Y){
+                _topOrLeft = itemRange * _lineNum + topOrLeftBuffer_;
+            }
+            return _topOrLeft;
+        }
+        //通过 列表元素序号 来获取列表元素，当前序号可能不在显示（列表元素是复用的，有可能序号对应的，此时没有复用到）
+        public UIItem getItemByItemIdx(int itemIdx_){
+            UIItem _uiItem = null;
+            for (int _idx = 0; _idx < activeItemList.Count; _idx++) {
+                _uiItem = activeItemList[_idx];
+                if (_uiItem.itemIdx == itemIdx_){
+                    return _uiItem;
+                }
+            }
+            return null;
         }
     }
 }

@@ -3,15 +3,16 @@ using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 namespace DataUIBinder{
-	public class UIManager : MonoBehaviour {
-        public static void frameUpdate(){
-            _instance.doFrameUpdate();
+	[RequireComponent(typeof(UIConfig))]
+	public class UIManager : MonoBehaviour,IUpdateAble {
+        public static void doFrameUpdate(float dt_){
+            _instance.frameUpdate(dt_);
         }
 		private static UIManager _instance;
 		public static UIManager instance{
 			get{
 				if (_instance == null) {
-					Debug.LogError ("ERROR " + System.Reflection.MethodBase.GetCurrentMethod().ReflectedType.FullName + " -> " + new System.Diagnostics.StackTrace().GetFrame(0).GetMethod().Name + " : " +
+					throw new Exception("ERROR " + System.Reflection.MethodBase.GetCurrentMethod().ReflectedType.FullName + " -> " + new System.Diagnostics.StackTrace().GetFrame(0).GetMethod().Name + " : " +
 						"instance is not created."
 					);
 				}
@@ -19,7 +20,7 @@ namespace DataUIBinder{
 			}
 			set{
 				if (_instance != null) {
-					Debug.LogError ("ERROR " + System.Reflection.MethodBase.GetCurrentMethod().ReflectedType.FullName + " -> " + new System.Diagnostics.StackTrace().GetFrame(0).GetMethod().Name + " : " +
+					throw new Exception("ERROR " + System.Reflection.MethodBase.GetCurrentMethod().ReflectedType.FullName + " -> " + new System.Diagnostics.StackTrace().GetFrame(0).GetMethod().Name + " : " +
 						"instance is already exist."
 					);
 				}
@@ -76,14 +77,14 @@ namespace DataUIBinder{
 		// 	}
 		// }
 		// 帧调用
-		public void doFrameUpdate () {
+		public void frameUpdate (float dt_) {
 			// if (!updateTime()){
 			// 	return;
 			// }
 			updateCheckDestroy();
-			updateUIContainers();
-			UIItem.doFrameUpdate();
-			ComponentWrapper.doFrameUpdate();
+			updateUIContainers(dt_);
+			UIItem.doFrameUpdate(dt_);
+			ComponentWrapper.doFrameUpdate(dt_);
 		}
 		// private bool updateTime(){
 		// 	_dt = _dt + Time.deltaTime;
@@ -99,7 +100,7 @@ namespace DataUIBinder{
 			int _length = _uiMainClosingList.Count;
 			for (int _idx = 0;_idx < _length;_idx++) {
 				UIMain _uiMain = _uiMainClosingList[_idx];
-				_uiMain.frameUpdate();
+				_uiMain.frameUpdate(Time.deltaTime);
 				if (_uiMain.state == UIState.Destroy){
 					Destroy(_uiMain.gameObject);
 					_uiMainClosingList.RemoveAt(_idx);
@@ -108,9 +109,9 @@ namespace DataUIBinder{
 				}
 			}
 		}
-		private void updateUIContainers(){
+		private void updateUIContainers(float dt_){
 			for (int _idx = 0;_idx < uiContainerList.Count;_idx++) {
-                uiContainerList[_idx].frameUpdate();
+                uiContainerList[_idx].frameUpdate(dt_);
 			}
 		}
 		public void destroyInNextFrame( UIMain uiMain_ ){
@@ -127,7 +128,7 @@ namespace DataUIBinder{
 			else if(type_ == UIType.Notice){return noticeContainer;}
 			else if(type_ == UIType.Debug){return debugContainer;}
 			else{
-				Debug.LogError ("ERROR " + System.Reflection.MethodBase.GetCurrentMethod ().ReflectedType.FullName + " -> " + new System.Diagnostics.StackTrace ().GetFrame (0).GetMethod ().Name + " : " +
+				throw new Exception("ERROR " + System.Reflection.MethodBase.GetCurrentMethod ().ReflectedType.FullName + " -> " + new System.Diagnostics.StackTrace ().GetFrame (0).GetMethod ().Name + " : " +
                     "UIType 设置错误"
                 );
 				return null;

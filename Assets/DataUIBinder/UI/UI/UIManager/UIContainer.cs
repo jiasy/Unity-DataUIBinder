@@ -16,11 +16,11 @@ namespace DataUIBinder{
 			
 		}
 		//帧更新集中处理
-		public virtual void frameUpdate () {
+		public virtual void frameUpdate (float dt_) {
 			int _listLength = uiList.Count;
 			for (int _idx = 0;_idx < _listLength;_idx++) {
 				UIMain _uiMain = uiList[_idx];
-				_uiMain.frameUpdate();
+				_uiMain.frameUpdate(dt_);
 			} 
 		}
 		// 重置 sortingOrder
@@ -71,7 +71,7 @@ namespace DataUIBinder{
 				uiList.RemoveAt(_uiMainIndex);
 				return true;
 			}
-			Debug.LogError ("ERROR " + System.Reflection.MethodBase.GetCurrentMethod().ReflectedType.FullName + " -> " + new System.Diagnostics.StackTrace().GetFrame(0).GetMethod().Name + " : " +
+			throw new Exception("ERROR " + System.Reflection.MethodBase.GetCurrentMethod().ReflectedType.FullName + " -> " + new System.Diagnostics.StackTrace().GetFrame(0).GetMethod().Name + " : " +
 				"字典和数组对用一个ui的关联不一致"
 			);
 			return false;

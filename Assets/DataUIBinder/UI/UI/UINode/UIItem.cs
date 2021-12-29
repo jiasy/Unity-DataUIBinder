@@ -9,11 +9,11 @@ namespace DataUIBinder{
     public class UIItem : UINode{
         //// - 列表元素有独立的帧循环队列，在 reUse/unUse 方法中进行增删。
         public static List<UIItem> uiItemList = new List<UIItem>();
-        public static void doFrameUpdate(){
+        public static void doFrameUpdate(float dt_){
             List<UIItem> _uiItemList = UIItem.uiItemList;
 			int _listLength = _uiItemList.Count;
             for (int _idx = 0; _idx < _listLength; _idx++) {
-	            _uiItemList[_idx].frameUpdate();
+	            _uiItemList[_idx].frameUpdate(dt_);
             }
         }
         public static void addUpdate(UIItem uiItem_){

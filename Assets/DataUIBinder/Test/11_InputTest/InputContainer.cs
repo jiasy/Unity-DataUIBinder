@@ -22,9 +22,10 @@ namespace DataUIBinder{
             inputTest.resetDataUIBind();
         }
         void Update(){
-            DataCenter.frameUpdate();
-            UIItem.doFrameUpdate();
-            ComponentWrapper.doFrameUpdate();
+            float _dt = Time.deltaTime;
+            DataCenter.frameUpdate(_dt);
+            UIItem.doFrameUpdate(_dt);
+            ComponentWrapper.doFrameUpdate(_dt);
         }
     }
 }

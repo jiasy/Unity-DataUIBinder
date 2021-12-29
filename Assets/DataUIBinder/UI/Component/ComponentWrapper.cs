@@ -27,10 +27,10 @@ namespace DataUIBinder {
                 throw new Exception("ERROR : 重复移除");
             }
         }
-        public static void doFrameUpdate(){
+        public static void doFrameUpdate(float dt_){
             int _updateListLength = updateList.Count;
             for (int _idx = 0; _idx < _updateListLength; _idx++) {
-                updateList[_idx].frameUpdate();
+                updateList[_idx].frameUpdate(dt_);
             }
         }
         public static Dictionary<UINode, List<ComponentWrapper>> uiNodeWrapperDict = new Dictionary<UINode, List<ComponentWrapper>> ();

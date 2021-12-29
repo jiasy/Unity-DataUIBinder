@@ -94,8 +94,9 @@ public class ComponentWrapperTest : MonoBehaviour{
         dataPathDriven = null;
     }
     void Update(){
-        DataCenter.frameUpdate();
-        ComponentWrapper.doFrameUpdate();
+        float _dt = Time.deltaTime;
+        DataCenter.frameUpdate(_dt);
+        ComponentWrapper.doFrameUpdate(_dt);
         current = isIntAdd?current+1:current-1;
     }
     public void onBtnClick(){

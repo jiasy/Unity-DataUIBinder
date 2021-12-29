@@ -65,7 +65,7 @@ public class DataPathListenerTest : MonoBehaviour{
     }
 
     void Update(){
-        DataCenter.frameUpdate();
+        DataCenter.frameUpdate(Time.deltaTime);
     }
 
     

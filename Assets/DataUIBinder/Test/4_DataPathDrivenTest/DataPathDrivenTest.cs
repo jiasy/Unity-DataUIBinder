@@ -89,7 +89,7 @@ public class DataPathDrivenTest : MonoBehaviour{
         dataPathDriven = null;
     }
     void Update(){
-        DataCenter.frameUpdate();
+        DataCenter.frameUpdate(Time.deltaTime);
     }
     private void dataPathList_Changed(string[] dataPathList_) {
         

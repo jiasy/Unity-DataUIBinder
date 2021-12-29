@@ -61,6 +61,11 @@ namespace DataUIBinder{
                 "server",
                 //模块 - 业务逻辑的数据空间，每个模块都可以挂在多个ui节点。
                 "module",
+                /*当前游戏状态，应用状态，SDK调用状态
+                    state.app : upgrade,hotfix,login,gameing
+                    state.native : none,purchasing,sharing
+                */
+                "state",
                 //UI节点状态 - 当 ui 显示之后，节点上的控件数据映射到 ui 的数据节点上。
                 "ui",
                 /*临时数据，
@@ -76,7 +81,7 @@ namespace DataUIBinder{
                 /*多国语言本地化
                     通过插件，静态识别所有Prefab的中文然后转换成表
                         生成Excel然后找人翻译，每一个country列对应一种语言。
-                    ui初始化的时候将中文拼写进行二次转换后再加载组件封装，从而实现本地化。
+                    ui初始化时，将中文拼写进行二次转换，再加载组件封装，从而实现本地化。
                         用户名:${user.name} -> ${localize.<country>.用户名:}:${user.name}
                 */
                 "localize",
@@ -421,13 +426,13 @@ namespace DataUIBinder{
         }
 #endregion
 
-        public static void frameUpdate(){
+        public static void frameUpdate(float dt_){
 #if UNITY_EDITOR
             root.dataChangeDispatcher.printListenerCount();
 #endif
             root.dispatchJustChange();
 #if UNITY_EDITOR
-            LogToFiles.frameUpdate();
+            LogToFiles.frameUpdate(dt_);
 #endif
         }
     }

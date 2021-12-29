@@ -59,8 +59,9 @@ namespace DataUIBinder{
         //     base.OnDestroy();
         // }
         void Update(){
-            DataCenter.frameUpdate();
-            ComponentWrapper.doFrameUpdate();
+            float _dt = Time.deltaTime;
+            DataCenter.frameUpdate(_dt);
+            ComponentWrapper.doFrameUpdate(_dt);
             current = isIntAdd?current+1:current-1;
         }
         public override void onBtn(string btnName_){

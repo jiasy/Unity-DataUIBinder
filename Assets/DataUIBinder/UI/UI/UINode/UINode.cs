@@ -41,7 +41,7 @@ namespace DataUIBinder{
                 if(!transformDict.ContainsKey(goName_)){
                     transformDict[goName_] = value;   
                 }else{
-                    Debug.LogError ("ERROR " + System.Reflection.MethodBase.GetCurrentMethod ().ReflectedType.FullName + " -> " + new System.Diagnostics.StackTrace ().GetFrame (0).GetMethod ().Name + " : " +
+                    throw new Exception("ERROR " + System.Reflection.MethodBase.GetCurrentMethod ().ReflectedType.FullName + " -> " + new System.Diagnostics.StackTrace ().GetFrame (0).GetMethod ().Name + " : " +
                         goName_ + " 已存在"
                     );
                 }
@@ -132,7 +132,7 @@ namespace DataUIBinder{
             base.OnDestroy();
             isDestroyed = true;
         }
-        public virtual void frameUpdate(){
+        public virtual void frameUpdate(float dt_){
             
         }
         //向自己所在的UI数据路径上设置值
@@ -206,27 +206,6 @@ namespace DataUIBinder{
             JSONNode _returnJSONNode = DataCenter.root.getValue(_sb.ToString());
             _sb.Clear();
             return _returnJSONNode;
-        }
-        //明确指定类型
-        public bool dt_gv_bool(string key_){
-            JSONNode _jsNode = dt_gv(key_);
-            return _jsNode == null ? false : _jsNode.AsBool;
-        }
-        public string dt_gv_str(string key_){
-            JSONNode _jsNode = dt_gv(key_);
-            return _jsNode == null ? "" : _jsNode.AsString;
-        }
-        public int dt_gv_int(string key_){
-            JSONNode _jsNode = dt_gv(key_);
-            return _jsNode == null ? 0 : _jsNode.AsInt;
-        }
-        public float dt_gv_float(string key_){
-            JSONNode _jsNode = dt_gv(key_);
-            return _jsNode == null ? 0 : _jsNode.AsFloat;
-        }
-        public double dt_gv_double(string key_){
-            JSONNode _jsNode = dt_gv(key_);
-            return _jsNode == null ? 0 : _jsNode.AsDouble;
         }
         protected virtual void OnEnable(){
             if(isUseForCopy){ 

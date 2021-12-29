@@ -16,7 +16,7 @@ public class ButtonPlus : Button,IUpdateAble{
     private float pressTriggerTime = 0.8f;
     private float pressTriggerIntervalTime = 0.1f;
     private bool pressTigger = false;
-    public void frameUpdate(){
+    public void frameUpdate(float dt_){
         if(pressTigger){
             if(Time.time > downTime + pressTriggerIntervalTime){
                 downTime = Time.time;

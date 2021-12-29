@@ -9,7 +9,7 @@ namespace DataUIBinder{
 		public static UIConfig instance{
 			get{
 				if (_instance == null) {
-					Debug.LogError ("ERROR " + System.Reflection.MethodBase.GetCurrentMethod().ReflectedType.FullName + " -> " + new System.Diagnostics.StackTrace().GetFrame(0).GetMethod().Name + " : " +
+					throw new Exception("ERROR " + System.Reflection.MethodBase.GetCurrentMethod().ReflectedType.FullName + " -> " + new System.Diagnostics.StackTrace().GetFrame(0).GetMethod().Name + " : " +
 						"instance is not created."
 					);
 				}
@@ -17,7 +17,7 @@ namespace DataUIBinder{
 			}
 			set{
 				if (_instance != null) {
-					Debug.LogError ("ERROR " + System.Reflection.MethodBase.GetCurrentMethod().ReflectedType.FullName + " -> " + new System.Diagnostics.StackTrace().GetFrame(0).GetMethod().Name + " : " +
+					throw new Exception("ERROR " + System.Reflection.MethodBase.GetCurrentMethod().ReflectedType.FullName + " -> " + new System.Diagnostics.StackTrace().GetFrame(0).GetMethod().Name + " : " +
 						"instance is already exist."
 					);
 				}

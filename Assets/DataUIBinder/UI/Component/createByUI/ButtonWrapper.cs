@@ -36,7 +36,7 @@ namespace DataUIBinder{
                 onBtn();
             });
         }
-        public virtual void frameUpdate(){
+        public virtual void frameUpdate(float dt_){
             if(justClicked){
                 justClickedFrameCount++;
                 if(justClickedFrameCount > 10){

@@ -94,7 +94,7 @@ namespace DataUIBinder{
             } 
         }
 #endif
-        public static void frameUpdate(){
+        public static void frameUpdate(float dt_){
 #if UNITY_EDITOR
             if(_inited == false){
                 throw new Exception("ERROR : 没有初始化过");

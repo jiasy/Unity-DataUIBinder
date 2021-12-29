@@ -51,8 +51,9 @@ namespace DataUIBinder{
             UIManager.instance.openUI("DebugMain");
 		}
         void Update(){
-            DataCenter.frameUpdate();
-			UIManager.frameUpdate();
+            float _dt = Time.deltaTime;
+            DataCenter.frameUpdate(_dt);
+			UIManager.doFrameUpdate(_dt);
         }
     }
 }

@@ -64,9 +64,10 @@ namespace DataUIBinder{
             base.OnDestroy();
         }
         void Update(){
-            DataCenter.frameUpdate();
-            UIItem.doFrameUpdate();
-            ComponentWrapper.doFrameUpdate();
+            float _dt = Time.deltaTime;
+            DataCenter.frameUpdate(_dt);
+            UIItem.doFrameUpdate(_dt);
+            ComponentWrapper.doFrameUpdate(_dt);
         }
         private void resetList(string lisDataPath_,string showListDataPath_,int itemNum_,bool needFilter_,bool needSort_){
             ListWrapper _lisX = this["list_x"].GetComponent<ListWrapper>();

@@ -27,7 +27,7 @@ public class DataCenterTest : MonoBehaviour{
     }
     void Update(){
         
-        DataCenter.frameUpdate();
+        DataCenter.frameUpdate(Time.deltaTime);
     }
     private void save_localSave_Changed(string dataPath_, JSONNode jsNode_) {
         LogToFiles.logByType(LogToFiles.LogType.DataStruct,nameof(JSONRootTest) + " < save_localSave_Changed > -------------------- save.localSave 变化");

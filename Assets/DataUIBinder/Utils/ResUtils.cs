@@ -24,7 +24,7 @@ namespace DataUIBinder{
             }else if (_currentResLoadType == ResLoadType.Local){
                 return null;
             }else{//设置模式和全局模式均为空。
-                Debug.LogError ("ERROR " + System.Reflection.MethodBase.GetCurrentMethod ().ReflectedType.FullName + " -> " + new System.Diagnostics.StackTrace ().GetFrame (0).GetMethod ().Name + " : " +
+                throw new Exception("ERROR " + System.Reflection.MethodBase.GetCurrentMethod ().ReflectedType.FullName + " -> " + new System.Diagnostics.StackTrace ().GetFrame (0).GetMethod ().Name + " : " +
                     "没指定读取方式"
                 );
                 return null;

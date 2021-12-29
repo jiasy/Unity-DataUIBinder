@@ -25,9 +25,9 @@ namespace DataUIBinder{
                 return _btnPlus;
             }
         }
-        public override void frameUpdate(){
-            base.frameUpdate();
-            btnPlus.frameUpdate();
+        public override void frameUpdate(float dt_){
+            base.frameUpdate(dt_);
+            btnPlus.frameUpdate(dt_);
         }
         protected override void onBtn(){
             uiNode.onBtn(gameObject.name);

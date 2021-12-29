@@ -74,8 +74,9 @@ namespace DataUIBinder{
         //     base.OnDestroy();
         // }
         void Update(){
-            DataCenter.frameUpdate();
-            ComponentWrapper.doFrameUpdate();
+            float _dt = Time.deltaTime;
+            DataCenter.frameUpdate(_dt);
+            ComponentWrapper.doFrameUpdate(_dt);
         }
         public override void onBtn(string btnName_){
             UnityEngine.Debug.Log("onBtn -> "+btnName_.ToString());

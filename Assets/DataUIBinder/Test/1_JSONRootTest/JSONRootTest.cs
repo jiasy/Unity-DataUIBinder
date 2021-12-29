@@ -73,7 +73,7 @@ public class JSONRootTest : MonoBehaviour{
         LogToFiles.log("    DATA-CHANGED : " + dataPath_ + " -> " + jsNode_);
     }
     void Update(){
-        LogToFiles.frameUpdate();//日志实际输出
+        LogToFiles.frameUpdate(Time.deltaTime);//日志实际输出
     }
     private void printStep(string step_){
         LogToFiles.printToAll("━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ ┏ " +step_ + " ┓ ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━");

@@ -39,8 +39,9 @@ namespace DataUIBinder{
         //     base.OnDestroy();
         // }
         void Update(){
-            DataCenter.frameUpdate();//更新数据中心
-            ComponentWrapper.doFrameUpdate();
+            float _dt = Time.deltaTime;
+            DataCenter.frameUpdate(_dt);//更新数据中心
+            ComponentWrapper.doFrameUpdate(_dt);
             //x值在[0，1.5]之间摇摆
             double _x = dc.gv("temp.x").AsDouble;
             if(isAdd){

@@ -77,7 +77,7 @@ namespace DataUIBinder{
             }
         }
 #endif
-        public void frameUpdate(){
+        public void frameUpdate(float dt_){
             if( listType == ListWrapper.ListType.None){
                 return;
             }
