@@ -1,3 +1,20 @@
+## English
+
+**DataUIBinder** is a data-binding framework for Unity (C#) that brings Vue-style two-way binding to game UI — with no glue code. UI widgets bind to data paths purely by naming convention in the editor: when data changes, the UI updates; user input writes back automatically.
+
+**Highlights**
+
+- **Binding by naming convention** — name a Text / Image / Slider / InputField with a data path (e.g. `module.player.gold`) and it's bound. Supports conditional bindings (`path==value`, `!=`, `>`, ranges like `path:[min,max]`), expressions (`${path%2+1}`) and custom formatters.
+- **DataCenter** — all game data (config, save, server, module, localization…) is flattened into observable key-value paths, with helpers for merging server lists with local config dictionaries (`listToDict`, `listFromDict`, `listFilterSortToList`).
+- **UIManager included, but optional** — a 9-layer UI hierarchy manager (base / float / pop-up / guide / tips / loading / notice / debug). DataCenter + ComponentWrapper work standalone, so you can add data binding to your existing UI system in minutes (see `Test/5_ComponentWrapperTest`).
+- **Replay & analytics built in** — player actions (including scrolling) can be recorded for replays, tutorials, event tracking and funnel analysis; data changes and listener states are auto-logged for debugging.
+
+**Try it:** open any scene under `Test/` — start with `Test/5_ComponentWrapperTest` to see binding added to plain Unity UI in minutes.
+
+*Documentation below is in Chinese. Feel free to contact me in English or Japanese: jia_shiyang@sina.com*
+
+---
+
 ### DataUIBinder
 
 ----
